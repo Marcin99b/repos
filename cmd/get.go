@@ -32,6 +32,7 @@ func runGet(cmd *cobra.Command, args []string) {
 		return
 	}
 
+	//todo create folder for repo
 	_, err = git.PlainClone(c.Defdir, &git.CloneOptions{
 		URL:      args[0],
 		Progress: os.Stdout,
