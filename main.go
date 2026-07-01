@@ -1,7 +1,11 @@
+/*
+Copyright © 2026 NAME HERE <EMAIL ADDRESS>
+
+*/
 package main
 
-import "fmt"
+import "marcin99b/repos/cmd"
 
 func main() {
-    fmt.Println("Hello, World!")
+	cmd.Execute()
 }
