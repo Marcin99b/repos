@@ -13,9 +13,10 @@ import (
 )
 
 var getCmd = &cobra.Command{
-	Use:   "get",
+	Use:   "get <url>",
 	Short: "Clone git repository",
 	Long:  `Clone git repository to directory {wd}`,
+	Args:  cobra.ExactArgs(1),
 	Run:   runGet,
 }
 
@@ -24,11 +25,6 @@ func init() {
 }
 
 func runGet(cmd *cobra.Command, args []string) {
-	if len(args) != 1 {
-		fmt.Println("Arguments not provided")
-		return
-	}
-
 	c, err := internal.ReadConfig()
 	if err != nil || len(c.Wd) == 0 {
 		fmt.Println("wd is empty")

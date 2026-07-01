@@ -12,16 +12,11 @@ import (
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "repos",
-	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
+	Short: "CLI for easier management of git repositories on local computer",
+	Long: `repos is a CLI for easier management of git repositories on local computer.
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	// Uncomment the following line if your bare application
-	// has an action associated with it:
-	// Run: func(cmd *cobra.Command, args []string) { },
+It lets you configure a single working directory as your repositories store,
+clone repositories into it, and list the repositories already there.`,
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

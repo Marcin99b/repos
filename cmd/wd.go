@@ -9,9 +9,10 @@ import (
 )
 
 var wdCmd = &cobra.Command{
-	Use:   "wd",
+	Use:   "wd [directory]",
 	Short: "Get or set working directory (repositories dictionary)",
 	Long:  `wd without parameter will return working directory, but wd with argument will update working directory`,
+	Args:  cobra.MaximumNArgs(1),
 	Run:   runWd,
 }
 
@@ -20,11 +21,6 @@ func init() {
 }
 
 func runWd(cmd *cobra.Command, args []string) {
-	if len(args) > 1 {
-		fmt.Println("Too many arguments...")
-		return
-	}
-
 	if len(args) == 0 {
 		value, err := get()
 		if err != nil {
