@@ -1,4 +1,4 @@
-module marcin99b/repos
+module github.com/Marcin99b/repos
 
 go 1.26
 
