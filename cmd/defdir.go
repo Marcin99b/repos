@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 	"marcin99b/repos/internal"
+	"os"
 
 	"github.com/spf13/cobra"
 )
@@ -20,7 +21,7 @@ func init() {
 }
 
 func run(cmd *cobra.Command, args []string) {
-	if len(args) > 0 {
+	if len(args) > 1 {
 		fmt.Println("Too many arguments...")
 		return
 	}
@@ -33,7 +34,7 @@ func run(cmd *cobra.Command, args []string) {
 		}
 		fmt.Println(value)
 	} else {
-		err := save(args[0])
+		err := update(args[0])
 		if err != nil {
 			fmt.Println(err.Error())
 			return
@@ -46,7 +47,12 @@ func get() (string, error) {
 	return c.Defdir, err
 }
 
-func save(value string) error {
+func update(value string) error {
+	defdir, err := os.Stat(value)
+	if err != nil || !defdir.IsDir() {
+		return fmt.Errorf("%s is not a dictionary", value)
+	}
+
 	c, err := internal.ReadConfig()
 	if err != nil {
 		return err
