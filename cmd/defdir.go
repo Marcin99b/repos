@@ -89,12 +89,10 @@ func createFile(configPath string) error {
 	fmt.Println(path.Dir(configPath))
 	err := os.MkdirAll(path.Dir(configPath), os.ModePerm)
 	if err != nil {
-		fmt.Println(err.Error())
 		return err
 	}
 	f, err := os.Create(configPath)
 	if err != nil {
-		fmt.Println(err.Error())
 		return err
 	}
 
