@@ -4,7 +4,6 @@ CLI for easier management of git repositories in local computer
 
 Features
 
-- store info about all repository folder paths
 - clone repositories to selected folder
 - set folder as repositories store
 - create branches and commit messages in configured format

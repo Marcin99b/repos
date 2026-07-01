@@ -9,7 +9,7 @@ import (
 )
 
 type ReposConfig struct {
-	Defdir string
+	Wd string
 }
 
 func UpdateConfig(config ReposConfig) error {
@@ -58,7 +58,7 @@ func createFile(configPath string) error {
 	}
 
 	c := ReposConfig{
-		Defdir: "",
+		Wd: "",
 	}
 
 	b, err := yaml.Marshal(c)

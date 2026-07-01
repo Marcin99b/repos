@@ -15,7 +15,7 @@ import (
 var getCmd = &cobra.Command{
 	Use:   "get",
 	Short: "Clone git repository",
-	Long:  `Clone git repository to directory {defdir}`,
+	Long:  `Clone git repository to directory {wd}`,
 	Run:   runGet,
 }
 
@@ -30,8 +30,8 @@ func runGet(cmd *cobra.Command, args []string) {
 	}
 
 	c, err := internal.ReadConfig()
-	if err != nil || len(c.Defdir) == 0 {
-		fmt.Println("defdir is empty")
+	if err != nil || len(c.Wd) == 0 {
+		fmt.Println("wd is empty")
 		return
 	}
 
@@ -49,7 +49,7 @@ func runGet(cmd *cobra.Command, args []string) {
 
 	projectName := splitted[len(splitted)-1]
 	projectName = strings.Replace(projectName, ".git", "", 1)
-	path := path.Join(c.Defdir, projectName)
+	path := path.Join(c.Wd, projectName)
 
 	_, err = git.PlainClone(path, &git.CloneOptions{
 		URL:      args[0],

@@ -8,19 +8,18 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var defdirCmd = &cobra.Command{
-	Use:   "defdir",
-	Short: "Get or set default repos directory",
-	Long: `defdir without parameter will return default directory, 
-	but defdir with argument will update default directory`,
-	Run: runDefdir,
+var wdCmd = &cobra.Command{
+	Use:   "wd",
+	Short: "Get or set working directory (repositories dictionary)",
+	Long:  `wd without parameter will return working directory, but wd with argument will update working directory`,
+	Run:   runWd,
 }
 
 func init() {
-	rootCmd.AddCommand(defdirCmd)
+	rootCmd.AddCommand(wdCmd)
 }
 
-func runDefdir(cmd *cobra.Command, args []string) {
+func runWd(cmd *cobra.Command, args []string) {
 	if len(args) > 1 {
 		fmt.Println("Too many arguments...")
 		return
@@ -44,12 +43,12 @@ func runDefdir(cmd *cobra.Command, args []string) {
 
 func get() (string, error) {
 	c, err := internal.ReadConfig()
-	return c.Defdir, err
+	return c.Wd, err
 }
 
 func update(value string) error {
-	defdir, err := os.Stat(value)
-	if err != nil || !defdir.IsDir() {
+	wd, err := os.Stat(value)
+	if err != nil || !wd.IsDir() {
 		return fmt.Errorf("%s is not a dictionary", value)
 	}
 
@@ -58,6 +57,6 @@ func update(value string) error {
 		return err
 	}
 
-	c.Defdir = value
+	c.Wd = value
 	return internal.UpdateConfig(c)
 }
