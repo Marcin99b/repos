@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"fmt"
-	"marcin99b/repos/internal"
+	"github.com/Marcin99b/repos/internal"
 	"net/url"
 	"os"
 	"path"

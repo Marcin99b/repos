@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"fmt"
-	"marcin99b/repos/internal"
+	"github.com/Marcin99b/repos/internal"
 	"os"
 
 	"github.com/spf13/cobra"
