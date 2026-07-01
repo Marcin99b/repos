@@ -13,14 +13,14 @@ var defdirCmd = &cobra.Command{
 	Short: "Get or set default repos directory",
 	Long: `defdir without parameter will return default directory, 
 	but defdir with argument will update default directory`,
-	Run: run,
+	Run: runDefdir,
 }
 
 func init() {
 	rootCmd.AddCommand(defdirCmd)
 }
 
-func run(cmd *cobra.Command, args []string) {
+func runDefdir(cmd *cobra.Command, args []string) {
 	if len(args) > 1 {
 		fmt.Println("Too many arguments...")
 		return
